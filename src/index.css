@@ -2,3 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+.table-header{
+     @apply px-1 py-1;
+}
+.table-body{
+     @apply px-1 py-1 text-center;
+}
+.table-body-input{
+     @apply border py-1 w-full rounded-lg
+}
+.table-body-text{
+     @apply flex border h-9 items-center justify-center rounded-lg
+}
+.table-body-summary{
+     @apply text-center py-3 px-2 bg-gray-200 rounded-xl 
+}
+.text-header{
+     @apply text-green-700 font-bold text-xl mb-5
+}
+.summary-text{
+     @apply text-lg
+}
+.summary-price{
+     @apply mr-3 border-2 w-32 pr-1 flex justify-end rounded-lg
+}
+.summary-list{
+     @apply flex justify-between mb-4
+}
