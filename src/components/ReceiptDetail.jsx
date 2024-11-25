@@ -74,14 +74,14 @@ const ReceiptDetail = () => {
      //      onChange: (e) => setCurrency(e.target.value)
      // },
      return (
-          <div className="w-auto h-auto m-5 p-6 border-2 rounded-t-lg">
+          <section className="w-auto h-auto p-6 border-2 rounded-t-lg">
                <div className="grid grid-cols-4 gap-x-10 gap-y-8 max-w-[60vw]">
                     {input_detail.map((input, index) => (
                          <input
                               key={index}
                               type={input.type}
                               value={input.value}
-                              onchange={input.onChange}
+                              onChange={input.onChange}
                               placeholder={input.name}
                               className="rounded-xl p-2 border-2"
                          />
@@ -91,7 +91,7 @@ const ReceiptDetail = () => {
                               list="Currency"
                               value={currency}
                               onChange={(e) => setCurrency(e.target.value)}
-                              placeholder='Type or select an option'
+                              placeholder='Type or select a Currency'
                               className="rounded-xl p-2 w-full border-2"
                          />
                          <datalist id="Currency">
@@ -101,7 +101,7 @@ const ReceiptDetail = () => {
                          </datalist>
                     </div>
                </div>
-          </div>
+          </section>
      )
 }
 
