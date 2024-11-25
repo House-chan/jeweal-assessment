@@ -53,6 +53,7 @@ function App() {
 		])
 	};
 
+	const currentCurrency = userDetail.currency ? userDetail.currency :"THB"
 	return (
 		<div className="w-full">
 			<div className="mx-5 mt-5">
@@ -66,12 +67,13 @@ function App() {
 							productRow={productRow}
 							setProductRow={setProductRow}
 							totalDetail={totalDetail}
-							currency={userDetail.currency}
+							currency={currentCurrency}
 						/>
 					</div>
 					<div className="w-[40vw]">
 						<SummaryDetail
 							totalDetail={totalDetail}
+							currency={currentCurrency}
 						/>
 					</div>
 				</div>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SummaryDetail = ({totalDetail}) => {
+const SummaryDetail = ({totalDetail, currency}) => {
      const vat = totalDetail.price * 0.07;
   return (
      <div className="py-5 px-10 w-full border-2 h-full">
@@ -18,7 +18,7 @@ const SummaryDetail = ({totalDetail}) => {
                               {totalDetail.priceWoDiscount.toFixed(2)} 
                          </p>
                          <p>
-                              THB
+                              {currency}
                          </p>
                     </div>
                </div>
@@ -32,7 +32,7 @@ const SummaryDetail = ({totalDetail}) => {
                               {totalDetail.discount.toFixed(2)} 
                          </p>
                          <p>
-                              THB
+                              {currency}
                          </p>
                     </div>
                </div>
@@ -46,7 +46,7 @@ const SummaryDetail = ({totalDetail}) => {
                               {totalDetail.price.toFixed(2)} 
                          </p>
                          <p>
-                              THB
+                              {currency}
                          </p>
                     </div>
                </div>
@@ -60,7 +60,7 @@ const SummaryDetail = ({totalDetail}) => {
                               {vat.toFixed(2)}
                          </p>
                          <p>
-                              THB
+                              {currency}
                          </p>
                     </div>
                </div>
@@ -70,7 +70,7 @@ const SummaryDetail = ({totalDetail}) => {
                          Grand Total
                     </div>
                     <div className="text-3xl font-bold">
-                         {(totalDetail.price + vat).toFixed(2)} THB
+                         {(totalDetail.price + vat).toFixed(2)} {currency}
                     </div>
                </div>
                {/* Note */}

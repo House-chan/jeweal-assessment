@@ -146,7 +146,7 @@ const ProductList = ({currency, productRow, setProductRow, totalDetail}) => {
 								</td>
 								<td className="table-body">
 									<p className="table-body-text">
-										THB
+										{currency}
 									</p>
 								</td>
 								<td className="table-body">
