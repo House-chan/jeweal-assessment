@@ -13,17 +13,14 @@ function App() {
 	])
 
 	const totalPrice = productRow.reduce((acc, product) => acc + (parseFloat(product.total) || 0), 0);
-	const totalPriceBeforeDiscount = productRow.reduce(
-	(acc, product) => acc + ((parseFloat(product.price) || 0) * (parseFloat(product.quantity) || 0)),
-	0
-	);
+	const totalPriceBeforeDiscount = productRow.reduce((acc, product) => acc + ((parseFloat(product.price) || 0) * (parseFloat(product.quantity) || 0)), 0);
 	const totalDiscount = totalPriceBeforeDiscount - totalPrice
 	const totalDetail = {
-		quantity: productRow.reduce((acc, product) => acc + (parseFloat(product.weight) || 0), 0),
+		quantity: productRow.reduce((acc, product) => acc + (parseFloat(product.quantity) || 0), 0),
 		weight:productRow.reduce((acc, product) => acc + (parseFloat(product.weight) || 0), 0),
 		price: totalPrice,
           priceWoDiscount: totalPriceBeforeDiscount,
-          totalDiscount: totalDiscount
+          discount: totalDiscount
 	}
 
 	return (
@@ -38,7 +35,9 @@ function App() {
 					/>
 				</div>
 				<div className="w-[40vw]">
-					<SummaryDetail/>
+					<SummaryDetail
+						totalDetail={totalDetail}
+					/>
 				</div>
 			</div>
 		</div>

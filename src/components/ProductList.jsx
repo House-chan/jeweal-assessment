@@ -40,10 +40,10 @@ const ProductList = ({currency, productRow, setProductRow, totalDetail}) => {
 		const product = productData[value];
 
 		if (product) {
+			updatedProduct.quantity = 1;
 			updatedProduct.price = product.price;
 			updatedProduct.weight = product.weight;
 			updatedProduct.total = updatedProduct.quantity * updatedProduct.price * (1 - (updatedProduct.discountCode / 100));
-			updatedProduct.quantity = 1;
 		}
 		else{
 			updatedProduct.price = "";
@@ -87,8 +87,8 @@ const ProductList = ({currency, productRow, setProductRow, totalDetail}) => {
 	}
 
 	return (
-		<div className="w-full py-5 px-10 bg-gray-100">
-			<div className="text-green-700 font-bold text-xl mb-5">
+		<section className="w-full py-5 px-10 bg-gray-100 border-2">
+			<div className="text-header">
 				Product List
 			</div>
 			{/* Product List */}
@@ -181,17 +181,17 @@ const ProductList = ({currency, productRow, setProductRow, totalDetail}) => {
 
 							</td>
 							<th className="table-body-summary">
-								Quantity
+								{totalDetail.quantity}
 							</th>
 							<th className="table-body-summary border-x-2 border-gray-300">
-								Weight
+								{totalDetail.weight}
 							</th>
 							<td></td>
 							<td></td>
 							<td></td>
 							<td className="border-x-2 border-gray-300"></td>
 							<th className="table-body-summary">
-								Total Price
+								{totalDetail.price}
 							</th>
 						</tr>
 					</tbody>
@@ -204,10 +204,10 @@ const ProductList = ({currency, productRow, setProductRow, totalDetail}) => {
 			<textarea 
 				type="text"
 				placeholder='Remark'
-				className="border-2 w-full rounded-lg h-32 p-2 align-top resize-none"
+				className="border-2 w-full rounded-lg h-32 p-2 resize-none"
 			/>
 
-		</div>
+		</section>
 	)
 }
 
