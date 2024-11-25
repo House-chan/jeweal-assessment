@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import ReceiptDetail from './components/ReceiptDetail';
 import ProductList from './components/ProductList';
 import SummaryDetail from './components/SummaryDetail';
+import ConfirmSection from './components/ConfirmSection';
 import { useState } from 'react';
 function App() {
 
@@ -24,22 +25,25 @@ function App() {
 	}
 
 	return (
-		<div className="mx-5 mt-5">
-			<ReceiptDetail/>
-			<div className="w-full flex">
-				<div className="w-[60vw]">
-					<ProductList 
-						productRow={productRow}
-						setProductRow={setProductRow}
-						totalDetail={totalDetail}
-					/>
-				</div>
-				<div className="w-[40vw]">
-					<SummaryDetail
-						totalDetail={totalDetail}
-					/>
+		<div className="w-full">
+			<div className="mx-5 mt-5">
+				<ReceiptDetail/>
+				<div className="w-full flex max-h-[65vh]">
+					<div className="w-[60vw]">
+						<ProductList 
+							productRow={productRow}
+							setProductRow={setProductRow}
+							totalDetail={totalDetail}
+						/>
+					</div>
+					<div className="w-[40vw]">
+						<SummaryDetail
+							totalDetail={totalDetail}
+						/>
+					</div>
 				</div>
 			</div>
+			<ConfirmSection />
 		</div>
 	);
 }
