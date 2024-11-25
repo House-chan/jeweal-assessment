@@ -6,6 +6,19 @@ import ConfirmSection from './components/ConfirmSection';
 import { useState } from 'react';
 function App() {
 
+	const [userDetail, setUserDetail] = useState(
+          {
+               docId: "",
+               date: "",
+               dueDate: "",
+               name: "",
+               receiptAddress: "",
+               deliveryAddress: "",
+               refId: "",
+               currency: ""
+          }
+     );
+
 	const [productRow, setProductRow] = useState([
 		{ id: "", quantity: "", weight: "", price: "", discountCode: "", discount: 0, total:""},
 		{ id: "", quantity: "", weight: "", price: "", discountCode: "", discount: 0, total:""},
@@ -24,16 +37,36 @@ function App() {
           discount: totalDiscount
 	}
 
+	const handleSaving = () => {
+		// Save the data to the server
+          console.log("Saving Data...");
+          // Redirect to the success page
+          console.log(productRow)
+	};
+
+	const handleCancel = () => {
+		setProductRow([
+			{ id: "", quantity: "", weight: "", price: "", discountCode: "", discount: 0, total:""},
+			{ id: "", quantity: "", weight: "", price: "", discountCode: "", discount: 0, total:""},
+			{ id: "", quantity: "", weight: "", price: "", discountCode: "", discount: 0, total:""},
+			{ id: "", quantity: "", weight: "", price: "", discountCode: "", discount: 0, total:""},
+		])
+	};
+
 	return (
 		<div className="w-full">
 			<div className="mx-5 mt-5">
-				<ReceiptDetail/>
+				<ReceiptDetail
+					userDetail={userDetail}
+					setUserDetail={setUserDetail}
+				/>
 				<div className="w-full flex max-h-[65vh]">
 					<div className="w-[60vw]">
 						<ProductList 
 							productRow={productRow}
 							setProductRow={setProductRow}
 							totalDetail={totalDetail}
+							currency={userDetail.currency}
 						/>
 					</div>
 					<div className="w-[40vw]">
@@ -43,7 +76,10 @@ function App() {
 					</div>
 				</div>
 			</div>
-			<ConfirmSection />
+			<ConfirmSection 
+				handleSaving={handleSaving}
+				handleCancel={handleCancel}
+			/>
 		</div>
 	);
 }

@@ -1,15 +1,15 @@
 import React from 'react'
 import { useState } from 'react'
 
-const ReceiptDetail = () => {
-     const [DocId, SetDocId] = useState("");
-     const [date, setDate] = useState("");
-     const [dueDate, setDueDate] = useState("");
-     const [name, setName] = useState("");
-     const [receiptAddress, setReceiptAddress] = useState(""); 
-     const [deliveryAddress, setDeliveryAddress] = useState("");
-     const [refId, setRefId] = useState("");
-     const [currency, setCurrency] = useState("");
+const ReceiptDetail = ({userDetail, setUserDetail}) => {
+     // const [DocId, SetDocId] = useState("");
+     // const [date, setDate] = useState("");
+     // const [dueDate, setDueDate] = useState("");
+     // const [name, setName] = useState("");
+     // const [receiptAddress, setReceiptAddress] = useState(""); 
+     // const [deliveryAddress, setDeliveryAddress] = useState("");
+     // const [refId, setRefId] = useState("");
+     // const [currency, setCurrency] = useState("");
 
      const [currencyOption] = useState([
           "USD $",
@@ -21,76 +21,71 @@ const ReceiptDetail = () => {
           "THB ฿"
      ])
 
+     const handleChange = (field, value) => {
+          setUserDetail({...userDetail, [field]: value});
+     }
+     
      const input_detail = 
      [
           {
-               name:"Doc ID",
+               placeholder:"Doc ID",
                type:"text",
-               value:DocId,
-               onChange: (e) => SetDocId(e.target.value)
+               value:userDetail.docId,
+               onChange: (e) => handleChange("docId", e.target.value)
           },
           {
-               name:"Issue Date",
+               placeholder:"Issue Date",
                type:"date",
-               value:date,
-               onChange: (e) => setDate(e.target.value)
+               value:userDetail.date,
+               onChange: (e) => handleChange("date", e.target.value)
           },
           {
-               name:"Due Date",
+               placeholder:"Due Date",
                type:"date",
-               value:dueDate,
-               onChange: (e) => setDueDate(e.target.value)
+               value:userDetail.dueDate,
+               onChange: (e) => handleChange("dueDate", e.target.value)
           },
           {
-               name:"Name",
+               placeholder:"Name",
                type:"text",
-               value:name,
-               onChange: (e) => setName(e.target.value)
+               value:userDetail.name,
+               onChange: (e) => handleChange("name", e.target.value)
           },
           {
-               name:"Receipt Address",
+               placeholder:"Receipt Address",
                type:"text",
-               value:receiptAddress,
-               onChange: (e) => setReceiptAddress(e.target.value)
+               value:userDetail.receiptAddress,
+               onChange: (e) => handleChange("receiptAddress", e.target.value)
           },
           {
-               name:"Delivery Address",
+               placeholder:"Delivery Address",
                type:"text",
-               value:deliveryAddress,
-               onChange: (e) => setDeliveryAddress(e.target.value)
+               value:userDetail.deliveryAddress,
+               onChange: (e) => handleChange("deliveryAddress", e.target.value)
           },
           {
-               name:"Ref ID",
+               placeholder:"Ref ID",
                type:"text",
-               value:refId,
-               onChange: (e) => setRefId(e.target.value)
+               value:userDetail.refId,
+               onChange: (e) => handleChange("refId", e.target.value)
           },
      ]
 
-     // {
-     //      name:"Currency",
-     //      type:"text",
-     //      value:currency,
-     //      onChange: (e) => setCurrency(e.target.value)
-     // },
      return (
           <section className="w-auto h-auto p-6 border-2 rounded-t-lg">
                <div className="grid grid-cols-4 gap-x-10 gap-y-8 max-w-[60vw]">
                     {input_detail.map((input, index) => (
                          <input
                               key={index}
-                              type={input.type}
-                              value={input.value}
-                              onChange={input.onChange}
-                              placeholder={input.name}
+                              {...input}
                               className="rounded-xl p-2 border-2"
                          />
                     ))}
                     <div>
                          <input
                               list="Currency"
-                              value={currency}
-                              onChange={(e) => setCurrency(e.target.value)}
+                              value={userDetail.currency}
+                              onChange={(e) => handleChange("currency", e.target.value)}
                               placeholder='Type or select a Currency'
                               className="rounded-xl p-2 w-full border-2"
                          />
