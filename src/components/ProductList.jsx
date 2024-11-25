@@ -87,7 +87,7 @@ const ProductList = ({currency, productRow, setProductRow, totalDetail}) => {
 	}
 
 	return (
-		<section className="w-full py-5 px-10 bg-gray-100 border-2">
+		<section className="w-full py-5 px-10 bg-gray-100 border-2 h-full">
 			<div className="text-header">
 				Product List
 			</div>
